@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Docker config envs
+docker/**/conf.env
+
+# API config envs
+api/config/.env.*
+api/.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+coverage/
+
+# Prisma
+packages/server/prisma/*.db
+packages/server/prisma/*.db-journal
+
+# Project docs (personal)
+technicalSpecifications.md
+info.md
+fixes.md
+patterns.md
+CODESTYLE.md
+_script.js

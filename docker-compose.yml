@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file:
+      - ./docker/postgres/conf.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  npm:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./:/app
+    env_file:
+      - ./docker/node/conf.env
+    entrypoint: ["npm"]
+
+  node:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./:/app
+    env_file:
+      - ./docker/node/conf.env
+    entrypoint: ["node"]
+
+volumes:
+  postgres_data:
