@@ -1,0 +1,27 @@
+@use '../../styles/variables' as *
+
+.logo
+  display: flex
+  align-items: center
+  gap: $spacing-sm
+  user-select: none
+
+  &__image-wrapper
+    width: 32px
+    height: 32px
+    background-color: $color-primary
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: $border-radius-sm
+
+  &__image
+    width: 17.5px
+    height: 12.25px
+    object-fit: contain
+    pointer-events: none
+
+  &__title
+    font-size: $font-size-ml
+    font-weight: $font-weight-semibold
+    color: $color-charcoal
