@@ -1,0 +1,177 @@
+@use '../../styles/variables' as *
+
+.login
+  display: flex
+  flex-wrap: wrap
+  height: 100vh
+
+  &__imposter-form,
+  &__imposter-info
+    flex: 1 1 50%
+    display: flex
+    justify-content: center
+    align-items: center
+
+    @media (max-width: $breakpoint-lg)
+      flex-basis: 100%
+
+  &__imposter-info
+    background: linear-gradient(to bottom, $color-blue, $color-blue-dark)
+
+.login-info, .login-form
+  width: 100%
+  max-width: 500px
+  padding-top: $spacing-xl
+  padding-bottom: $spacing-xl
+
+.login-form
+  .logo
+    &__image-wrapper
+      width: 40px
+      height: 40px
+      border-radius: $border-radius-md
+
+    &__image
+      width: 22.5px
+      height: 17.5px
+
+    &__title
+      font-size: $font-size-lg
+
+  &__title
+    padding-top: $spacing-lg
+    padding-bottom: $spacing-xs
+
+  &__subtitle
+    padding-bottom: $spacing-xl
+    color: $color-gray
+
+  &__divider
+    display: flex
+    align-items: center
+    padding-top: $spacing-lg
+    font-size: $font-size-sm
+    color: $color-gray-medium
+
+    &::before,
+    &::after
+      content: ''
+      flex: 1
+      height: 1px
+      background-color: $border-color-default
+
+    &::before
+      margin-right: $spacing-md
+
+    &::after
+      margin-left: $spacing-md
+
+.form-options
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding-bottom: $spacing-lg
+
+  &__forgot
+    font-size: $font-size-sm
+
+.remember
+  cursor: pointer
+  display: flex
+  align-items: center
+  font-size: $font-size-sm
+  color: $color-gray
+  user-select: none
+
+  &__text
+    padding-left: $spacing-xs
+
+.form-social
+  display: flex
+  padding-top: $spacing-lg
+  padding-bottom: $spacing-lg
+  gap: $spacing-sm
+
+  &__button
+    flex-grow: 1
+    flex-basis: 0
+    background-color: $color-white
+    border: $border-size-sm solid $border-color-default
+    border-radius: $border-radius-sm
+    padding: $spacing-sm $spacing-md
+    cursor: pointer
+
+.social-button
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: $spacing-xs
+
+  &__icon_google
+    width: 15.25px
+    height: 15.5px
+
+  &__icon_apple
+    width: 11.76px
+    height: 14px
+
+  &__text
+    color: $color-gray-dark
+    font-size: $font-size-sm
+    font-weight: $font-weight-medium
+
+.form-signup
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: $spacing-xs
+  padding-top: $spacing-xs
+  font-size: $font-size-sm
+
+  &__text
+    color: $color-gray
+
+.login-info
+  &__dumbbell
+    width: 75px
+    height: 52.5px
+
+  &__title
+    font-size: $font-size-xxl
+    color: $color-white
+
+  &__subtitle
+    padding-top: $spacing-lg
+    font-size: $font-size-base
+    color: $color-blue-light
+
+  &__list
+    list-style: none
+    padding: 0
+    margin: 0
+    display: flex
+    flex-direction: column
+    gap: $spacing-lg
+
+.info-item
+  display: flex
+  gap: $spacing-sm
+
+  &__icon
+    width: 24px
+    height: 24px
+    margin-top: 4px
+
+  &__content
+    display: flex
+    flex-direction: column
+    gap: $spacing-xs
+
+  &__title
+    font-size: $font-size-base
+    font-weight: $font-weight-semibold
+    color: $color-white
+
+  &__text
+    font-size: $font-size-md
+    color: $color-blue-light
