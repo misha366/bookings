@@ -1,0 +1,16 @@
+@use '../../styles/variables' as *
+
+.calendar-page
+  display: flex
+  flex-direction: column
+  height: 100vh
+
+  &__content
+    display: flex
+    flex-grow: 1
+    overflow: hidden
+
+  &__calendar
+    flex-grow: 1
+    padding: $spacing-lg
+    overflow: auto
