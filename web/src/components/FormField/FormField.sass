@@ -9,8 +9,18 @@
     color: $color-gray-dark
     padding-bottom: $spacing-xs
 
+.field-input
+  position: relative
+
+  &__input
+    width: 100%
+    height: 100%
+
+    &::placeholder
+      color: $color-gray-light
+
   &__icon,
-  &__button
+  &__toggle
     position: absolute
     right: $spacing-md
     top: 50%
@@ -21,33 +31,19 @@
     user-select: none
     transition: opacity 0.2s
 
-  &__button
+  &__toggle
     pointer-events: auto
     background: none
     border: none
     padding: 0
     cursor: pointer
 
-    &:hover .form-field__icon
+    &:hover
       opacity: 0.7
 
-    .form-field__icon
-      position: static
+    img
       width: 100%
       height: 100%
-      right: 0
-      left: 0
-      transform: none
-
-  &__input-wrapper
-    position: relative
-    
-  &__input
-    width: 100%
-    height: 100%
-
-    &::placeholder
-      color: $color-gray-light
 
   &__error
     display: block

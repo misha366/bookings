@@ -32,22 +32,22 @@ export function FormField({
       <label htmlFor={id} className="form-field__label">
         {label}
       </label>
-      <div className="form-field__input-wrapper">
+      <div className="form-field__input-wrapper field-input">
         <input
           id={id}
           type={inputType}
-          className="form-field__input"
+          className="field-input__input"
           placeholder={placeholder}
           {...register} // react-hook-form: unpacks name, onChange, onBlur, ref
         />
-        {icon && !isPassword && <img src={icon} alt="" className="form-field__icon" />}
+        {icon && !isPassword && <img src={icon} alt="" className="field-input__icon" />}
         {icon && isPassword && (
           <button
             type="button"
-            className="form-field__button"
+            className="field-input__toggle"
             onClick={() => setShowPassword(!showPassword)}
           >
-            <img src={icon} alt="" className="form-field__icon" />
+            <img src={icon} alt="" />
           </button>
         )}
       </div>
