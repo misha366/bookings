@@ -38,7 +38,7 @@ export function FormField({
           type={inputType}
           className="form-field__input"
           placeholder={placeholder}
-          {...register} // react-hook-form: unpacks name, onChange, onBlur, ref
+          {...register}
         />
         {icon && !isPassword && <img src={icon} alt="" className="form-field__icon" />}
         {icon && isPassword && (
