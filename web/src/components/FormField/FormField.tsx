@@ -1,9 +1,10 @@
 import { type ReactNode, useState } from 'react';
+
 import { type UseFormRegisterReturn } from 'react-hook-form';
 
 import './FormField.sass';
 
-interface FormFieldProps {
+type FormFieldProps = {
   id: string;
   label: string;
   type?: string;
@@ -11,9 +12,9 @@ interface FormFieldProps {
   error?: string;
   icon?: string;
   register: UseFormRegisterReturn;
-}
+};
 
-export function FormField({
+export const FormField = ({
   id,
   label,
   type = 'text',
@@ -21,7 +22,7 @@ export function FormField({
   error,
   icon,
   register,
-}: FormFieldProps): ReactNode {
+}: FormFieldProps): ReactNode => {
   const isPassword = type === 'password';
 
   const [showPassword, setShowPassword] = useState(false);

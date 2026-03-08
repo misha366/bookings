@@ -4,7 +4,7 @@ import iconDumbbell from '../../assets/icons/icon-dumbbell.png';
 
 import './Logo.sass';
 
-export function Logo(): ReactNode {
+export const Logo = (): ReactNode => {
   return (
     <div className="logo">
       <div className="logo__image-wrapper logo-image">

@@ -1,12 +1,13 @@
 import { type ReactNode } from 'react';
-import FullCalendar from '@fullcalendar/react';
+
 import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import FullCalendar from '@fullcalendar/react';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
 import './Calendar.sass';
 
-export function Calendar(): ReactNode {
+export const Calendar = (): ReactNode => {
   const handleDateClick = (info: { dateStr: string }): void => {
     console.log('Date clicked:', info.dateStr);
   };

@@ -1,9 +1,10 @@
 import { type ReactNode } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import './Register.sass';
 
-export function Register(): ReactNode {
+export const Register = (): ReactNode => {
   return (
     <div className="register">
       <h1 className="register__title">Register</h1>

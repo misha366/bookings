@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 
 import './MyBookingsSidebar.sass';
 
-export function MyBookingsSidebar(): ReactNode {
+export const MyBookingsSidebar = (): ReactNode => {
   return (
     <aside className="my-bookings-sidebar">
       <div className="my-bookings-sidebar__section sidebar-filters">

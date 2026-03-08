@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 
 import './Home.sass';
 
-export function Home(): ReactNode {
+export const Home = (): ReactNode => {
   return (
     <div className="home">
       <h1 className="home__title">Welcome to Bookings</h1>

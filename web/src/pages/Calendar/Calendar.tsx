@@ -5,7 +5,7 @@ import { MyBookingsSidebar } from '../../components/MyBookingsSidebar';
 
 import './Calendar.sass';
 
-export function Calendar(): ReactNode {
+export const Calendar = (): ReactNode => {
   return (
     <div className="calendar-page">
       <div className="calendar-page__content">

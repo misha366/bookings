@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
+
 import { Outlet } from 'react-router-dom';
 
-export function AuthLayout(): ReactNode {
+export const AuthLayout = (): ReactNode => {
   return <Outlet />;
 }

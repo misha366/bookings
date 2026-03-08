@@ -1,17 +1,18 @@
 import { type ReactNode } from 'react';
-import { useForm } from 'react-hook-form';
+
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
-import { FormField } from '../../components/FormField';
-import { Logo } from '../../components/Logo';
+import iconApple from '../../assets/icons/icon-apple.svg';
 import iconDone from '../../assets/icons/icon-done.png';
 import iconDumbbell from '../../assets/icons/icon-dumbbell.png';
-import iconGoogle from '../../assets/icons/icon-google.svg';
-import iconApple from '../../assets/icons/icon-apple.svg';
 import iconEmail from '../../assets/icons/icon-email.svg';
+import iconGoogle from '../../assets/icons/icon-google.svg';
 import iconPassword from '../../assets/icons/icon-password.png';
+import { FormField } from '../../components/FormField';
+import { Logo } from '../../components/Logo';
 
 import './Login.sass';
 
@@ -23,7 +24,7 @@ const loginSchema = z.object({
 
 type LoginForm = z.infer<typeof loginSchema>;
 
-export function Login(): ReactNode {
+export const Login = (): ReactNode => {
   const navigate = useNavigate();
   const {
     register,
