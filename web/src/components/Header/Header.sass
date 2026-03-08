@@ -7,11 +7,209 @@
   gap: $spacing-xl
   border-bottom: $border-size-sm solid $border-color-subtle
 
+  @media (max-width: $breakpoint-lg)
+    flex-wrap: wrap
+    justify-content: center
+
   &__nav
     display: flex
-    gap: $spacing-lg
+    flex-shrink: 0
+    gap: $spacing-xxs
 
+.toolbar
+  display: flex
+  align-items: center
+  flex-grow: 1
+  justify-content: flex-end
+  gap: $spacing-md
+
+  @media (max-width: $breakpoint-lg)
+    width: 100%
+    justify-content: center
+
+.notifications-dropdown
+  position: relative
+  align-self: stretch
+  display: flex
+
+  &__button
+    position: relative
+    width: 31.75px
+    display: flex
+    align-items: center
+    justify-content: center
+    background: none
+    border: none
+    padding: 0
+    border-radius: $border-radius-xs
+    cursor: pointer
+    outline: none
+
+    &:hover
+      background-color: $border-color-subtle
+
+    img
+      width: 15.75px
+      height: 18px
+
+  &__badge
+    position: absolute
+    top: $spacing-xxs
+    right: 0
+    min-width: 16px
+    height: 16px
+    padding: 0 $spacing-xxs
+    background-color: $color-primary
+    color: $color-white
+    font-size: $font-size-xs
+    font-weight: $font-weight-semibold
+    border-radius: $border-radius-sm
+    display: flex
+    align-items: center
+    justify-content: center
+
+  &__menu
+    position: absolute
+    top: 100%
+    right: 0
+    margin-top: $spacing-xs
+    min-width: 320px
+    outline: none
+
+.account-dropdown
+  position: relative
+  align-self: stretch
+  display: flex
+
+  &__menu
+    position: absolute
+    top: 100%
+    right: 0
+    margin-top: $spacing-xs
+    min-width: 200px
+    outline: none
+
+.dropdown-panel
+  background: $color-white
+  border: $border-size-sm solid $border-color-subtle
+  border-radius: $border-radius-sm
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+  overflow: hidden
+  z-index: 1000
+
+  &__header
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: $spacing-sm $spacing-md
+    border-bottom: $border-size-sm solid $border-color-subtle
+
+  &__title
+    font-size: $font-size-sm
+    font-weight: $font-weight-semibold
+    color: $color-charcoal
+
+  &__close
+    background: none
+    border: none
+    padding: 0
+    cursor: pointer
+    outline: none
+
+    img
+      width: 20px
+      height: 20px
+
+  &__content
+    padding: $spacing-xs 0
+
+  &__item
+    display: block
+    padding: $spacing-sm $spacing-md
+    color: $color-gray
+    text-decoration: none
+    font-size: $font-size-sm
+    cursor: pointer
+
+    &:hover
+      background-color: $border-color-subtle
+
+.notification-item
+  &__title
+    display: block
+    color: $color-charcoal
+
+  &__time
+    display: block
+    font-size: $font-size-sm
+    color: $color-gray-light
+    padding-top: $spacing-xxs
+
+  &_unread
+    background-color: $color-blue-lightest
+
+    &:hover
+      background-color: $color-blue-light
+
+.search-result
+  &__type
+    display: inline-block
+    padding: $spacing-xxs
+    font-size: $font-size-xs
+    font-weight: $font-weight-semibold
+    text-transform: uppercase
+    background-color: $color-blue-lightest
+    color: $color-blue
+    border-radius: $border-radius-xs
+
+  &__title
+    padding-top: $spacing-xs
+    display: block
+    color: $color-charcoal
+
+  &__subtitle
+    display: block
+    font-size: $font-size-sm
+    color: $color-gray-light
+    padding-top: $spacing-xs
+
+.search-field
+  position: relative
+  max-width: 256px
+  min-width: 110px
+  flex-grow: 1
+  flex-shrink: 1
+
+  @media (max-width: $breakpoint-lg)
+    max-width: none
+
+  &__dropdown
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    padding-top: $spacing-xs
+    min-width: 280px
+
+  &__icon
+    position: absolute
+    left: $spacing-sm
+    top: 50%
+    transform: translateY(-50%)
+    width: 14px
+    height: 14px
+    pointer-events: none
+
+  &__input
+    width: 100%
+    padding: $spacing-sm $spacing-sm $spacing-sm $spacing-xxl
+    font-size: $font-size-sm
+    font-weight: $font-weight-regular
+
+.nav-menu
   &__link
+    padding: $spacing-xs $spacing-sm
+    border-radius: $border-radius-xs
     color: $color-gray
     text-decoration: none
     font-size: $font-size-sm
@@ -19,19 +217,61 @@
     transition: color $transition-fast
 
     &:hover
-      color: $color-charcoal
+      background-color: $border-color-subtle
 
     &.active
-      color: $color-primary
+      background-color: $color-blue-lightest
+      color: $color-blue
 
-  &__search
-    margin-left: auto
+.account
+  display: flex
+  align-items: center
+  align-self: stretch
+  gap: $spacing-xs
+  background: none
+  border: none
+  padding: 0 $spacing-xs
+  border-radius: $border-radius-xs
+  cursor: pointer
+  outline: none
 
-  &__search-input
-    width: 240px
+  &:hover
+    background-color: $border-color-subtle
 
-  &__notifications
-    //
+  &__avatar
+    width: 32px
+    height: 32px
+    border-radius: 50%
+    object-fit: cover
 
-  &__account-dropdown
-    //
+  &__name
+    max-width: 120px
+    font-size: $font-size-sm
+    font-weight: $font-weight-medium
+    color: $color-gray
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+    @media (max-width: $breakpoint-sm)
+      display: none
+
+  &__chevron
+    width: 11px
+    height: 6px
+
+@media (max-width: $breakpoint-xs)
+  .notifications-dropdown__menu,
+  .account-dropdown__menu
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin-top: 0
+    min-width: 100%
+    border-radius: 0
+    z-index: 1000
+
+  .dropdown-panel__close
+    display: block
