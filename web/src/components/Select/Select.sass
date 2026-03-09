@@ -1,0 +1,31 @@
+@use '../../styles/variables' as *
+
+.select
+  display: flex
+  flex-direction: column
+
+  &__caption
+    font-size: $font-size-xs
+    font-weight: $font-weight-medium
+    color: $color-gray
+    padding-bottom: $spacing-xs
+
+  &__control
+    appearance: none
+    padding: $spacing-xs $spacing-lg $spacing-xs $spacing-md
+    border: $border-size-sm solid $border-color-default
+    border-radius: $border-radius-sm
+    font-family: inherit
+    font-size: $font-size-sm
+    font-weight: $font-weight-regular
+    color: $color-black
+    background-color: $color-gray-bg
+    background-image: url('../../assets/icons/icon-chevron-down.svg')
+    background-repeat: no-repeat
+    background-position: right $spacing-sm center
+    cursor: pointer
+
+    &:focus
+      border-color: $color-charcoal
+      outline: 2px solid $color-blue
+      outline-offset: 1px
