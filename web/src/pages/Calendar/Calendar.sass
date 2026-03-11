@@ -5,10 +5,17 @@
   flex-direction: column
   height: 100vh
 
+  @media (max-width: $breakpoint-lg)
+    height: auto
+    min-height: 100vh
+
   &__content
     display: flex
     flex-grow: 1
     overflow: hidden
+
+    @media (max-width: $breakpoint-lg)
+      flex-direction: column
 
   &__calendar
     flex-grow: 1
