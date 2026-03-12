@@ -1,41 +1,46 @@
 @use '../../styles/variables' as *
 
-.my-bookings-sidebar
+.calendar-sidebar
   padding: $spacing-lg
   display: flex
   flex-direction: column
   gap: $spacing-lg
   border-right: $border-size-sm solid $border-color-default
-  min-width: 240px
+  min-width: 256px
 
-  &__section
-    //
+  @media (max-width: $breakpoint-lg)
+    order: 1
+    min-width: auto
+    width: 100%
+    flex-direction: row
+    border-right: none
+    border-top: $border-size-sm solid $border-color-default
+
+  @media (max-width: $breakpoint-sm)
+    flex-direction: column
 
 .sidebar-filters
+  @media (max-width: $breakpoint-lg)
+    flex-grow: 1
+    flex-shrink: 1
+    flex-basis: 0
+
   &__title
-    font-size: $font-size-base
-    font-weight: $font-weight-semibold
-    color: $color-charcoal
     padding-bottom: $spacing-sm
 
   &__content
     display: flex
     flex-direction: column
-    gap: $spacing-sm
+    gap: $spacing-md
 
-  &__select
-    padding: $spacing-sm $spacing-md
-    border: $border-size-sm solid $border-color-default
-    border-radius: $border-radius-sm
-    font-size: $font-size-sm
-    color: $color-gray
-    cursor: pointer
 
 .sidebar-availability
+  @media (max-width: $breakpoint-lg)
+    flex-grow: 1
+    flex-shrink: 1
+    flex-basis: 0
+
   &__title
-    font-size: $font-size-base
-    font-weight: $font-weight-semibold
-    color: $color-charcoal
     padding-bottom: $spacing-sm
 
   &__list
@@ -50,23 +55,24 @@
     display: flex
     align-items: center
     gap: $spacing-xs
-    font-size: $font-size-sm
+    font-size: $font-size-xs
+    font-weight: $font-weight-regular
     color: $color-gray
 
     &::before
       content: ''
       width: 12px
       height: 12px
-      border-radius: 50%
+      border-radius: $border-radius-full
 
     &_available::before
-      background-color: #22C55E
+      background-color: $color-green
 
     &_low::before
-      background-color: $color-amber
+      background-color: $color-yellow
 
     &_full::before
-      background-color: $color-red
+      background-color: $color-red-light
 
     &_canceled::before
       background-color: $color-gray-light

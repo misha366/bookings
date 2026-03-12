@@ -1,1 +1,0 @@
-export { MyBookingsSidebar } from './MyBookingsSidebar';
