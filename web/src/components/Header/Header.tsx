@@ -7,8 +7,8 @@ import avatarMock from '../../assets/icons/avatar-mock.jpg';
 import iconChevronDown from '../../assets/icons/icon-chevron-down.svg';
 import iconClose from '../../assets/icons/icon-close.svg';
 import iconNotifications from '../../assets/icons/icon-notifications.svg';
-import iconSearch from '../../assets/icons/icon-search.svg';
 import { Logo } from '../Logo';
+import { SearchField } from '../SearchField';
 
 import './Header.sass';
 
@@ -19,30 +19,14 @@ type Notification = {
   isRead: boolean;
 };
 
-type SearchResult = {
-  id: string;
-  type: 'trainer' | 'session';
-  title: string;
-  subtitle: string;
-};
-
 const mockNotifications: Notification[] = [
   { id: '1', title: 'New booking confirmed', time: '2 hours ago', isRead: false },
   { id: '2', title: 'Session reminder: Yoga class', time: '5 hours ago', isRead: false },
   { id: '3', title: 'Trainer left a review', time: '1 day ago', isRead: true },
 ];
 
-const mockSearchResults: SearchResult[] = [
-  { id: '1', type: 'trainer', title: 'John Smith', subtitle: 'Yoga, Pilates' },
-  { id: '2', type: 'trainer', title: 'Emma Wilson', subtitle: 'CrossFit, HIIT' },
-  { id: '3', type: 'session', title: 'Morning Yoga', subtitle: 'Tomorrow, 8:00 AM' },
-  { id: '4', type: 'session', title: 'Evening HIIT', subtitle: 'Today, 6:00 PM' },
-];
-
 export const Header = (): ReactNode => {
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const unreadCount = notifications.filter((n) => !n.isRead).length;
 
@@ -63,31 +47,7 @@ export const Header = (): ReactNode => {
       </nav>
 
       <div className="header__actions toolbar">
-        <div className="toolbar__search search-field">
-          <img src={iconSearch} alt="" className="search-field__icon" />
-          <input
-            type="text"
-            className="search-field__input"
-            placeholder="Search trainers, sessions..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={() => setIsSearchOpen(true)}
-            onBlur={() => setIsSearchOpen(false)}
-          />
-          {isSearchOpen && (
-            <div className="search-field__dropdown dropdown-panel">
-              <div className="dropdown-panel__content">
-                {mockSearchResults.map((result) => (
-                  <Link key={result.id} to={`/${result.type}s/${result.id}`} className="dropdown-panel__item search-result">
-                    <span className="search-result__type">{result.type}</span>
-                    <span className="search-result__title">{result.title}</span>
-                    <span className="search-result__subtitle">{result.subtitle}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
+        <SearchField />
 
         <Menu as="div" className="toolbar__notifications notifications-dropdown">
           {({ close }) => (

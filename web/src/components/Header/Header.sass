@@ -34,7 +34,7 @@
 
   &__button
     position: relative
-    width: 31.75px
+    width: 32px
     display: flex
     align-items: center
     justify-content: center
@@ -49,7 +49,7 @@
       background-color: $border-color-subtle
 
     img
-      width: 15.75px
+      width: 16px
       height: 18px
 
   &__badge
@@ -150,61 +150,6 @@
 
     &:hover
       background-color: $color-blue-light
-
-.search-result
-  &__type
-    display: inline-block
-    padding: $spacing-xxs
-    font-size: $font-size-xxs
-    font-weight: $font-weight-semibold
-    text-transform: uppercase
-    background-color: $color-blue-lightest
-    color: $color-blue
-    border-radius: $border-radius-xs
-
-  &__title
-    padding-top: $spacing-xs
-    display: block
-    color: $color-charcoal
-
-  &__subtitle
-    display: block
-    font-size: $font-size-sm
-    color: $color-gray-light
-    padding-top: $spacing-xs
-
-.search-field
-  position: relative
-  max-width: 256px
-  min-width: 110px
-  flex-grow: 1
-  flex-shrink: 1
-
-  @media (max-width: $breakpoint-lg)
-    max-width: none
-
-  &__dropdown
-    position: absolute
-    top: 100%
-    left: 0
-    right: 0
-    padding-top: $spacing-xs
-    min-width: 280px
-
-  &__icon
-    position: absolute
-    left: $spacing-sm
-    top: 50%
-    transform: translateY(-50%)
-    width: 14px
-    height: 14px
-    pointer-events: none
-
-  &__input
-    width: 100%
-    padding: $spacing-sm $spacing-sm $spacing-sm $spacing-xxl
-    font-size: $font-size-sm
-    font-weight: $font-weight-regular
 
 .nav-menu
   &__link
