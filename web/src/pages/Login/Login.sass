@@ -7,7 +7,9 @@
 
   &__imposter-form,
   &__imposter-info
-    flex: 1 1 50%
+    flex-grow: 1
+    flex-shrink: 1
+    flex-basis: 50%
     display: flex
     justify-content: center
     align-items: center
@@ -16,15 +18,39 @@
       flex-basis: 100%
 
   &__imposter-info
-    background: linear-gradient(to bottom, $color-blue, $color-blue-dark)
+    background-color: $color-blue-dark
+    background-image: radial-gradient(ellipse at 0 0, $color-purple 0, transparent 50%), radial-gradient(ellipse at 100% 100%, $color-teal 0, transparent 50%), radial-gradient(ellipse at 100% 0, $color-blue 0, transparent 50%)
+    background-size: 200% 200%
+    animation: gradient-shift 12s ease infinite
+
+@keyframes gradient-shift
+  0%
+    background-position: 0 0
+  15%
+    background-position: 50% 100%
+  30%
+    background-position: 100% 50%
+  45%
+    background-position: 50% 0
+  60%
+    background-position: 0 80%
+  75%
+    background-position: 80% 20%
+  100%
+    background-position: 0 0
 
 .login-info, .login-form
   width: 100%
   max-width: 500px
-  padding-top: $spacing-xl
-  padding-bottom: $spacing-xl
+  padding: $spacing-xl $spacing-lg
 
 .login-form
+  .form-field:has(#email)
+    padding-bottom: $spacing-lg
+
+  .form-field:has(#password)
+    padding-bottom: $spacing-md
+
   .logo
     &__image-wrapper
       width: 40px
@@ -66,14 +92,37 @@
     &::after
       margin-left: $spacing-md
 
+.demo-hint
+  position: relative
+  margin: 0
+  font-size: $font-size-sm
+  color: $color-gray-light
+  cursor: pointer
+
+  @media (max-width: $breakpoint-sm)
+    font-size: $font-size-xxs
+
+  &__default,
+  &__hover
+    transition: opacity 0.3s ease
+
+  &__hover
+    position: absolute
+    left: 0
+    opacity: 0
+
+  &:hover
+    .demo-hint__default
+      opacity: 0
+
+    .demo-hint__hover
+      opacity: 1
+
 .form-options
   display: flex
   align-items: center
   justify-content: space-between
   padding-bottom: $spacing-lg
-
-  &__forgot
-    font-size: $font-size-sm
 
 .remember
   cursor: pointer
@@ -82,6 +131,17 @@
   font-size: $font-size-sm
   color: $color-gray
   user-select: none
+
+  @media (max-width: $breakpoint-sm)
+    font-size: $font-size-xxs
+
+  &__checkbox
+    width: 16px
+    height: 16px
+
+    @media (max-width: $breakpoint-sm)
+      width: 12px
+      height: 12px
 
   &__text
     padding-left: $spacing-xs
@@ -92,49 +152,11 @@
   padding-bottom: $spacing-lg
   gap: $spacing-sm
 
-  &__button
-    flex-grow: 1
-    flex-basis: 0
-    background-color: $color-white
-    border: $border-size-sm solid $border-color-default
-    border-radius: $border-radius-sm
-    padding: $spacing-sm $spacing-md
-    cursor: pointer
-
-.social-button
-  display: flex
-  align-items: center
-  justify-content: center
-  gap: $spacing-xs
-
-  &__icon_google
-    width: 15px
-    height: 16px
-
-  &__icon_apple
-    width: 12px
-    height: 14px
-
-  &__text
-    color: $color-gray-dark
-    font-size: $font-size-sm
-    font-weight: $font-weight-medium
-
-.form-signup
-  display: flex
-  align-items: center
-  justify-content: center
-  gap: $spacing-xs
-  padding-top: $spacing-xs
-  font-size: $font-size-sm
-
-  &__text
-    color: $color-gray
-
 .login-info
   &__dumbbell
     width: 75px
     height: 53px
+    user-select: none
 
   &__title
     font-size: $font-size-xxl
@@ -160,7 +182,8 @@
   &__icon
     width: 24px
     height: 24px
-    margin-top: 4px
+    margin-top: $spacing-xxs
+    user-select: none
 
   &__content
     display: flex

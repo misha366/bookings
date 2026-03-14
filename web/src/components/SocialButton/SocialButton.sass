@@ -1,0 +1,78 @@
+@use '../../styles/variables' as *
+
+.social-button
+  flex-grow: 1
+  flex-basis: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: $spacing-xs
+  background-color: $color-white
+  border: $border-size-sm solid $border-color-default
+  border-radius: $border-radius-sm
+  padding: $spacing-sm $spacing-md
+  font-family: inherit
+  cursor: pointer
+  user-select: none
+  transition: border-color 0.3s ease
+
+  &:hover
+    border-color: $color-primary
+
+  &__icon
+    transition: transform 0.3s ease
+
+    &_google
+      width: 14px
+      height: 14px
+
+    &_apple
+      width: 18px
+      height: 18px
+
+  &__text
+    color: $color-gray-dark
+    font-size: $font-size-sm
+    font-weight: $font-weight-medium
+    transition: transform 0.3s ease, opacity 0.3s ease
+
+.social-dialog
+  position: fixed
+  inset: 0
+  z-index: 100
+
+  &__backdrop
+    position: fixed
+    inset: 0
+    background-color: rgba($color-black, 0.4)
+
+  &__container
+    position: fixed
+    inset: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: $spacing-md
+
+  &__panel
+    background-color: $color-white
+    border-radius: $border-radius-md
+    padding: $spacing-xl
+    max-width: 400px
+    text-align: center
+
+  &__title
+    font-size: $font-size-lg
+    font-weight: $font-weight-semibold
+    color: $color-charcoal
+    margin: 0
+    padding-bottom: $spacing-sm
+
+  &__text
+    font-size: $font-size-md
+    color: $color-gray
+    margin: 0
+    padding-bottom: $spacing-lg
+
+  &__button
+    width: 100%
