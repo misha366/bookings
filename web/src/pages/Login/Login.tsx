@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import iconApple from '../../assets/icons/icon-apple.svg';
@@ -13,6 +13,7 @@ import iconGoogle from '../../assets/icons/icon-google.svg';
 import iconPassword from '../../assets/icons/icon-password.png';
 import { FormField } from '../../components/FormField';
 import { Logo } from '../../components/Logo';
+import { SocialButton } from '../../components/SocialButton';
 
 import './Login.sass';
 
@@ -32,13 +33,16 @@ export const Login = (): ReactNode => {
     formState: { errors },
   } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: 'demo@visitor.com',
+      password: 'visitorpassword333',
+    },
   });
 
-  const onSubmit = async (data: LoginForm): Promise<void> => {
+  const onSubmit = async (_data: LoginForm): Promise<void> => {
     // TODO: Replace with real API call
-    console.log('Login attempt:', data);
     await new Promise((resolve) => setTimeout(resolve, 500));
-    navigate('/my-bookings');
+    navigate('/calendar');
   };
 
   return (
@@ -75,9 +79,10 @@ export const Login = (): ReactNode => {
               <input className="remember__checkbox" type="checkbox" {...register('rememberMe')} />
               <span className="remember__text">Remember me</span>
             </label>
-            <Link to="/forgot-password" className="form-options__forgot link-text">
-              Forgot password?
-            </Link>
+            <p className="form-options__demo-hint demo-hint">
+              <span className="demo-hint__default">Use demo credentials to explore the app</span>
+              <span className="demo-hint__hover">demo@visitor.com / visitorpassword333</span>
+            </p>
           </div>
 
           <button type="submit" className="login-form__submit btn-primary">
@@ -87,19 +92,8 @@ export const Login = (): ReactNode => {
           <div className="login-form__divider">or continue with</div>
 
           <div className="login-form__social form-social">
-            <button type="button" className="form-social__button social-button">
-              <img className="social-button__icon social-button__icon_google" src={iconGoogle} alt="Google" />
-              <span className="social-button__text">Google</span>
-            </button>
-            <button type="button" className="form-social__button social-button">
-              <img className="social-button__icon social-button__icon_apple" src={iconApple} alt="Apple" />
-              <span className="social-button__text">Apple</span>
-            </button>
-          </div>
-
-          <div className="login-form__signup form-signup">
-            <span className="form-signup__text">Don't have an account?</span>
-            <Link to="/register" className="form-signup__link link-text">Sign up</Link>
+            <SocialButton icon={iconGoogle} text="Google" variant="google" />
+            <SocialButton icon={iconApple} text="Apple" variant="apple" />
           </div>
         </form>
       </div>
