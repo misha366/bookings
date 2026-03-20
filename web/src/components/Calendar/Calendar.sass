@@ -1,4 +1,325 @@
 @use '../../styles/variables' as *
 
 .calendar
+  --fc-border-color: #{$border-color-subtle}
   height: 100%
+  overflow-x: auto
+
+  // Header toolbar container (title, nav buttons, view switcher)
+  .fc .fc-toolbar.fc-header-toolbar
+    margin: 0
+    padding: $spacing-md $spacing-lg
+
+    @media (max-width: $breakpoint-sm)
+      flex-direction: column
+      gap: $spacing-sm
+      padding: $spacing-md
+
+  // Left section of toolbar (title + nav buttons)
+  .fc-toolbar-chunk:first-child
+    display: flex
+    align-items: center
+
+  // Button groups (nav buttons, view switcher)
+  .fc .fc-button-group
+    display: flex
+    gap: $spacing-xs
+    margin: 0
+
+  // View switcher button group (Day/Week/Month)
+  .fc-toolbar-chunk:last-child .fc-button-group
+    position: relative
+    gap: 0
+    padding: $spacing-xxs
+    background-color: $color-gray-lighter
+    border-radius: $border-radius-sm
+
+  .header-calendar-view-indicator
+    position: absolute
+    top: $spacing-xxs
+    left: 0
+    height: calc(100% - $spacing-xxs * 2)
+    background-color: $color-blue
+    border-radius: $border-radius-xs
+    transition: transform $transition-fast, width $transition-fast
+    pointer-events: none
+
+  // View switcher buttons (Day, Week, Month)
+  .fc-toolbar-chunk:last-child .fc-button
+    background: none
+    border: none
+    padding: $spacing-xs $spacing-sm
+    color: $color-gray
+    font-size: $font-size-sm
+    font-weight: $font-weight-medium
+    outline: none
+    box-shadow: none
+
+    &:focus,
+    &:focus-visible
+      outline: none
+      box-shadow: none
+
+    &.fc-button-active
+      position: relative
+      background: none
+      color: $color-white
+
+  // "Today" button
+  .fc .fc-button.fc-today-button
+    padding: $spacing-xs $spacing-sm
+    background-color: $color-gray-lighter
+    border: none
+    border-radius: $border-radius-sm
+    color: $color-gray
+    font-size: $font-size-sm
+    font-weight: $font-weight-medium
+    outline: none
+
+    &:hover,
+    &:disabled
+      background-color: $color-blue-lightest
+      color: $color-blue
+
+    &:focus
+      outline: none
+      box-shadow: none
+
+  // Calendar title
+  .fc-toolbar-title
+    width: 166px
+    margin: 0
+    padding: 0
+    font-size: $font-size-base
+    font-weight: $font-weight-semibold
+    color: $color-charcoal
+
+  // Custom prev/next navigation buttons
+  .fc .fc-button.fc-customPrev-button,
+  .fc .fc-button.fc-customNext-button
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 26px
+    height: 32px
+    background: none
+    border: none
+    padding: 0
+    border-radius: $border-radius-sm
+    cursor: pointer
+    outline: none
+
+    &:hover
+      background-color: $border-color-subtle
+
+    &:active,
+    &:focus
+      background-color: transparent
+      box-shadow: none
+
+    // Icon inside nav buttons
+    .fc-icon
+      display: block
+      width: 14px
+      height: 8px
+
+  // Custom prev arrow icon
+  .fc-icon-custom-prev
+    background: url('../../assets/icons/icon-chevron-down.svg') center no-repeat
+    transform: rotate(90deg)
+
+  // Custom next arrow icon
+  .fc-icon-custom-next
+    background: url('../../assets/icons/icon-chevron-down.svg') center no-repeat
+    transform: rotate(-90deg)
+
+  // Day headers (Mon, Tue, Wed... or Mon 5, Tue 6...)
+  .fc-col-header-cell-cushion
+    padding: $spacing-md 0
+    font-size: $font-size-xs
+    font-weight: $font-weight-medium
+    color: $color-gray-medium
+
+    @media (max-width: $breakpoint-sm)
+      font-size: $font-size-xxs
+
+  // Time label container (left column with hours)
+  .fc-timegrid-slot-label-frame
+    display: flex
+    justify-content: flex-start
+    padding-left: $spacing-md
+
+    @media (max-width: $breakpoint-md)
+      padding-left: $spacing-xxs
+
+  // Time label text (6:00 AM, 7:00 AM...)
+  .fc-timegrid-slot-label-cushion
+    font-size: $font-size-xs
+    font-weight: $font-weight-regular
+    color: $color-gray-medium
+    padding: 0
+
+    @media (max-width: $breakpoint-md)
+      font-size: $font-size-xxs
+
+  .fc-timegrid-axis-cushion
+    padding: 0
+
+  // Single time slot row (1 hour height)
+  .fc-timegrid-slot
+    height: 80px
+
+  // Main calendar grid table
+  .fc-theme-standard .fc-scrollgrid
+    border: none
+    border-top: 1px solid $border-color-subtle
+
+  // Column width definitions in table (inline styles require !important)
+  .fc-scrollgrid colgroup col
+    width: 147px !important
+
+    @media (max-width: $breakpoint-lg)
+      width: 100px !important
+
+    @media (max-width: $breakpoint-md)
+      width: 50px !important
+
+  // Current day cell highlight
+  .fc .fc-day-today
+    background-color: $color-blue-lightest
+
+  // Selection highlight (when dragging to select time range)
+  .fc .fc-highlight
+    background-color: $color-gray-highlight
+
+  // Event wrapper and positioning container
+  .fc-timegrid-event,
+  .fc-timegrid-event-harness
+    background: none
+    border: none
+
+  // Event element in time grid
+  .fc-timegrid-event
+    margin-bottom: 0
+    box-shadow: none
+
+  // Generic event element (all views)
+  .fc-event
+    background: none
+    border: none
+
+  // Remove focus indicator from events
+  .fc a.fc-event
+    outline: none
+
+    &::before,
+    &::after
+      display: none
+
+  // Event positioning container with inset property
+  .fc-timegrid-event-harness-inset
+    margin: $spacing-xs
+
+    @media (max-width: $breakpoint-sm)
+      margin: $spacing-xxs
+
+  // Event content container
+  .fc-timegrid-event .fc-event-main
+    padding: 0
+
+// Month view layout
+.fc-daygrid-day-frame.fc-scrollgrid-sync-inner
+  display: flex
+  flex-direction: column
+
+  &::before,
+  &::after
+    display: none
+
+.fc-daygrid-day-events
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+
+  &:focus,
+  &:focus-visible
+    outline: none
+    box-shadow: none
+
+  &::before,
+  &::after
+    display: none
+
+.fc-daygrid-event-harness
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+  margin: $spacing-xs
+
+  &::before,
+  &::after
+    display: none
+
+.fc-daygrid-day-top
+  @media (max-width: $breakpoint-sm)
+    font-size: $font-size-xxs
+
+.fc-daygrid-day-bottom
+  display: flex
+  justify-content: center
+
+.fc-daygrid-more-link
+  flex-grow: 1
+  text-align: center
+  margin: 0 $spacing-xs $spacing-xs
+
+  @media (max-width: $breakpoint-sm)
+    font-size: $font-size-xxs
+
+// Month view: move availability dot above the card on small screens
+@media (max-width: $breakpoint-sm)
+  .fc-dayGridMonth-view .event-card
+    overflow: visible
+
+  .calendar .fc-dayGridMonth-view .event-card .event-card__availability
+    top: -19px
+    left: 50%
+    right: auto
+    transform: translateX(-50%)
+
+.calendar .fc .fc-daygrid-event.fc-daygrid-dot-event
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+  margin: 0
+  outline: none
+
+  &:focus,
+  &:focus-visible
+    outline: none
+    box-shadow: none
+
+  &::before,
+  &::after
+    display: none
+
+  .event-card
+    flex-grow: 1
+
+  .fc-event-main
+    height: 100%
+
+// Week/Month views: show letter instead of full info on small screens
+@media (max-width: $breakpoint-sm)
+  .calendar .fc-timeGridWeek-view,
+  .calendar .fc-dayGridMonth-view
+    .event-card
+      padding: 0
+
+    .event-card .event-card__letter
+      display: block
+
+    .event-card .event-card__trainer,
+    .event-card .event-card__info,
+    .event-card .event-card__location
+      display: none
