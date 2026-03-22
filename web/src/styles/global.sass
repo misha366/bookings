@@ -84,22 +84,28 @@ input[type="checkbox"]
   &:visited:hover
     color: color.adjust($color-primary, $lightness: -10%)
 
-.btn-primary
+@mixin btn($color, $bg-color, $hover-lightness)
   display: inline-block
   width: 100%
-  color: $color-white
+  color: $color
   font-family: inherit
   font-size: $font-size-sm
   font-weight: $font-weight-semibold
   padding: $spacing-sm $spacing-md
   border: none
   border-radius: $border-radius-sm
-  background-color: $color-blue
+  background-color: $bg-color
   cursor: pointer
   transition: background-color $transition-fast
 
   &:hover
-    background-color: color.adjust($color-blue, $lightness: -10%)
+    background-color: color.adjust($bg-color, $lightness: $hover-lightness)
+
+.btn-primary
+  @include btn($color-white, $color-blue, -10%)
+
+.btn-secondary
+  @include btn($color-gray-dark, $color-gray-lighter, -5%)
 
 .error-fallback
   display: flex
