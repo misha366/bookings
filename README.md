@@ -1,5 +1,7 @@
 # Bookings
 
+> docker compose run --rm -p 5173:5173 -w /app/web npm run dev
+
 ## REST API Conventions
 
 ### URL Structure
