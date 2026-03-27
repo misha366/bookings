@@ -1,4 +1,3 @@
-@use 'sass:color'
 @use './variables' as *
 
 html,
@@ -76,36 +75,50 @@ input[type="checkbox"]
   transition: color $transition-fast
 
   &:hover
-    color: color.adjust($color-primary, $lightness: -10%)
+    color: darken($color-primary, 10%)
 
   &:visited
     color: $color-primary
 
   &:visited:hover
-    color: color.adjust($color-primary, $lightness: -10%)
+    color: darken($color-primary, 10%)
 
-@mixin btn($color, $bg-color, $hover-lightness)
+.button
   display: inline-block
   width: 100%
-  color: $color
   font-family: inherit
   font-size: $font-size-sm
   font-weight: $font-weight-semibold
   padding: $spacing-sm $spacing-md
   border: none
   border-radius: $border-radius-sm
-  background-color: $bg-color
   cursor: pointer
   transition: background-color $transition-fast
 
-  &:hover
-    background-color: color.adjust($bg-color, $lightness: $hover-lightness)
+  &:disabled
+    opacity: 0.5
+    cursor: not-allowed
 
-.btn-primary
-  @include btn($color-white, $color-blue, -10%)
+  &-primary
+    color: $color-white
+    background-color: $color-blue
 
-.btn-secondary
-  @include btn($color-gray-dark, $color-gray-lighter, -5%)
+    &:hover:not(:disabled)
+      background-color: darken($color-blue, 10%)
+
+  &-secondary
+    color: $color-gray-dark
+    background-color: $color-gray-lighter
+
+    &:hover:not(:disabled)
+      background-color: darken($color-gray-lighter, 5%)
+
+  &-cancel
+    color: $color-red
+    background-color: $color-red-subtle
+
+    &:hover:not(:disabled)
+      background-color: darken($color-red-subtle, 5%)
 
 .error-fallback
   display: flex
@@ -122,3 +135,9 @@ input[type="checkbox"]
   &__message
     color: $color-gray-medium
     margin-bottom: $spacing-lg
+
+.container
+  width: 100%
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 $spacing-lg
