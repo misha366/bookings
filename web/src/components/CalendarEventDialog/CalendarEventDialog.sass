@@ -1,0 +1,137 @@
+@use '../../styles/variables' as *
+
+.event-dialog
+  position: fixed
+  inset: 0
+  z-index: 100
+
+  &__backdrop
+    position: fixed
+    inset: 0
+    background-color: rgba($color-black, 0.4)
+
+  &__container
+    position: fixed
+    inset: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: $spacing-md
+
+.dialog-panel
+  position: relative
+  width: 100%
+  max-width: 450px
+  background-color: $color-white
+  border-radius: $border-radius-md
+  padding: $spacing-lg
+
+  &__close
+    position: absolute
+    top: $spacing-md
+    right: $spacing-md
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 32px
+    height: 32px
+    padding: 0
+    background: none
+    border: none
+    border-radius: $border-radius-sm
+    cursor: pointer
+
+    &:hover
+      background-color: $color-gray-bg
+
+  &__title
+    font-size: $font-size-lg
+    font-weight: $font-weight-semibold
+    color: $color-charcoal
+    margin: 0
+    padding-bottom: $spacing-md
+
+  &__trainer
+    padding-bottom: $spacing-md
+
+  &__content
+    padding-bottom: $spacing-md
+
+.trainer-card
+  display: flex
+  align-items: center
+  gap: $spacing-sm
+
+  &__photo
+    width: 48px
+    height: 48px
+    border-radius: $border-radius-full
+    object-fit: contain
+    user-select: none
+
+  &__info
+    display: flex
+    flex-direction: column
+    overflow: hidden
+    min-width: 0
+
+  &__name
+    font-size: $font-size-md
+    font-weight: $font-weight-medium
+    color: $color-charcoal
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+  &__role
+    font-size: $font-size-sm
+    color: $color-gray
+
+.info-list
+  display: flex
+  flex-direction: column
+  gap: $spacing-xs
+  background-color: $color-gray-lightest
+  padding: $spacing-md
+  border-radius: $border-radius-sm
+
+.info-row
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  &__label
+    font-size: $font-size-sm
+    color: $color-gray
+
+  &__value
+    font-size: $font-size-sm
+    font-weight: $font-weight-medium
+    color: $color-black
+
+    &_available
+      color: $color-green
+
+    &_low
+      color: $color-yellow
+
+    &_full
+      color: $color-red-light
+
+    &_canceled
+      color: $color-gray-light
+
+.action-buttons
+  display: flex
+  gap: $spacing-sm
+  padding-top: $spacing-xl
+
+  &__button
+    flex-grow: 1
+    flex-shrink: 1
+    flex-basis: 0
+    outline: none
+
+    &:focus,
+    &:focus-visible
+      outline: none

@@ -1,17 +1,17 @@
 import { type ReactNode } from 'react';
 
-import { Calendar as CalendarComponent } from '../../components/Calendar';
+import { Calendar } from '../../components/Calendar';
 import { CalendarSidebar } from '../../components/CalendarSidebar';
 
-import './Calendar.sass';
+import './CalendarPage.sass';
 
-export const Calendar = (): ReactNode => {
+export const CalendarPage = (): ReactNode => {
   return (
     <div className="calendar-page">
       <div className="calendar-page__content">
         <CalendarSidebar />
         <div className="calendar-page__calendar">
-          <CalendarComponent />
+          <Calendar />
         </div>
       </div>
     </div>
