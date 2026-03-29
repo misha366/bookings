@@ -15,7 +15,7 @@ function ErrorFallback({ error, resetError }: ErrorFallbackProps): ReactNode {
       </p>
       <button
         type="button"
-        className="btn-primary"
+        className="button button-primary"
         onClick={resetError}
       >
         Try again

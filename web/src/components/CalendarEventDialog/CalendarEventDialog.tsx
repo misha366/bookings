@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 
+import { formatDate, formatTime } from '../../common';
 import iconClose from '../../assets/icons/icon-close.svg';
 import trainerPhoto from '../../assets/images/trainer.png';
 import type { CalendarEventDetails } from '../../types';
@@ -14,14 +15,16 @@ type CalendarEventDialogProps = {
   onBook: () => void;
 };
 
-const formatTime = (date: Date | null): string => {
-  if (date === null) return '';
-  return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
+  weekday: 'long',
+  month: 'short',
+  day: 'numeric',
 };
 
-const formatDate = (date: Date | null): string => {
-  if (date === null) return '';
-  return date.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+const TIME_OPTIONS: Intl.DateTimeFormatOptions = {
+  hour: 'numeric',
+  minute: '2-digit',
+  hour12: true,
 };
 
 export const CalendarEventDialog = ({
@@ -48,12 +51,12 @@ export const CalendarEventDialog = ({
           <div className="dialog-panel__content info-list">
             <div className="info-list__row info-row">
               <span className="info-row__label">Date</span>
-              <span className="info-row__value">{formatDate(event.start)}</span>
+              <span className="info-row__value">{formatDate({ date: event.start, options: DATE_OPTIONS })}</span>
             </div>
             <div className="info-list__row info-row">
               <span className="info-row__label">Time</span>
               <span className="info-row__value">
-                {formatTime(event.start)} - {formatTime(event.end)}
+                {formatTime({ date: event.start, options: TIME_OPTIONS })} - {formatTime({ date: event.end, options: TIME_OPTIONS })}
               </span>
             </div>
             <div className="info-list__row info-row">
@@ -76,10 +79,10 @@ export const CalendarEventDialog = ({
             )}
           </div>
           <div className="dialog-panel__actions action-buttons">
-            <button type="button" className="action-buttons__button btn-secondary" onClick={onClose}>
+            <button type="button" className="action-buttons__button button button-secondary" onClick={onClose}>
               Cancel
             </button>
-            <button type="button" className="action-buttons__button btn-primary" onClick={onBook}>
+            <button type="button" className="action-buttons__button button button-primary" onClick={onBook}>
               Book Session
             </button>
           </div>
