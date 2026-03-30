@@ -1,0 +1,145 @@
+@use '../../styles/variables' as *
+
+.my-booking-item
+  padding: $spacing-lg
+  border: 1px solid $border-color-subtle
+  border-radius: $border-radius-md
+  background-color: $color-white
+  transition: box-shadow $transition-fast
+
+  &:hover
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)
+
+.item-content
+  display: flex
+  flex-wrap: wrap
+  gap: $spacing-md
+
+  @media (max-width: $breakpoint-sm)
+    flex-direction: column
+
+  &__main
+    display: flex
+    gap: $spacing-md
+    flex-basis: 40%
+    min-width: 0
+
+    @media (max-width: $breakpoint-lg)
+      flex-grow: 1
+      flex-basis: 0
+
+    @media (max-width: $breakpoint-sm)
+      flex-basis: auto
+      max-width: 100%
+
+  &__session
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: flex-end
+    gap: $spacing-xs
+
+    @media (max-width: $breakpoint-lg)
+      flex-grow: 1
+      flex-basis: 0
+
+    @media (max-width: $breakpoint-sm)
+      flex-basis: auto
+
+  &__actions
+    align-self: flex-start
+    flex-grow: 1
+
+    @media (max-width: $breakpoint-lg)
+      flex-basis: 100%
+
+    @media (max-width: $breakpoint-sm)
+      flex-basis: auto
+
+.booking-main
+  &__photo
+    width: 64px
+    height: 64px
+    border-radius: $border-radius-full
+    object-fit: contain
+    flex-shrink: 0
+
+  &__info
+    display: flex
+    flex-direction: column
+    gap: $spacing-xs
+    min-width: 0
+
+  &__header
+    display: flex
+    align-items: center
+    gap: $spacing-xs
+    padding-bottom: $spacing-xxs
+    min-width: 0
+
+  &__name
+    font-size: $font-size-md
+    font-weight: $font-weight-semibold
+    color: $color-charcoal
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+  &__status
+    font-size: $font-size-xs
+    font-weight: $font-weight-medium
+    padding: $spacing-xxxs $spacing-xs
+    border-radius: $border-radius-md
+    flex-shrink: 0
+    text-transform: capitalize
+
+    &_pending
+      color: $color-gray-medium
+      background-color: $color-gray-lighter
+
+    &_confirmed
+      color: $color-green-dark
+      background-color: $color-green-light
+
+    &_cancelled
+      color: $color-red
+      background-color: $color-red-lightest
+
+.booking-caption
+  display: flex
+  align-items: center
+  gap: $spacing-xs
+  font-size: $font-size-sm
+  font-weight: $font-weight-regular
+  color: $color-gray
+
+  &__icon
+    width: 14px
+    height: 14px
+
+.booking-actions
+  display: flex
+  justify-content: flex-end
+  gap: $spacing-xs
+
+  &__button
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: $spacing-xs
+    white-space: nowrap
+    width: auto
+
+    @media (max-width: $breakpoint-lg)
+      flex-grow: 1
+      flex-basis: 0
+
+    @media (max-width: $breakpoint-sm)
+      padding: $spacing-xs $spacing-sm
+      font-size: $font-size-xs
+
+  &__icon
+    height: 14px
+
+    @media (max-width: $breakpoint-sm)
+      height: 12px
