@@ -1,28 +1,16 @@
 import { type ReactNode } from 'react';
 
+import { TRAINING_TYPES, TRAINERS, LOCATIONS } from '../../mock/filters';
+import { setTrainingType, setTrainer, setLocation } from '../../store/filtersSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Select } from '../Select';
 
 import './CalendarSidebar.sass';
 
-const mockTrainingTypes = [
-  { id: '1', value: 'personal', label: 'Personal Training' },
-  { id: '2', value: 'group', label: 'Group Training' },
-  { id: '3', value: 'yoga', label: 'Yoga' },
-];
-
-const mockTrainers = [
-  { id: '1', value: '1', label: 'John Smith' },
-  { id: '2', value: '2', label: 'Sarah Johnson' },
-  { id: '3', value: '3', label: 'Mike Wilson' },
-];
-
-const mockLocations = [
-  { id: '1', value: 'main', label: 'Main Gym' },
-  { id: '2', value: 'studio', label: 'Studio A' },
-  { id: '3', value: 'outdoor', label: 'Outdoor Area' },
-];
-
 export const CalendarSidebar = (): ReactNode => {
+  const dispatch = useAppDispatch();
+  const filters = useAppSelector((state) => state.filters);
+
   return (
     <aside className="calendar-sidebar">
       <div className="calendar-sidebar__section sidebar-filters">
@@ -30,18 +18,24 @@ export const CalendarSidebar = (): ReactNode => {
         <div className="sidebar-filters__content">
           <Select
             caption="Training Type"
-            options={mockTrainingTypes}
+            options={TRAINING_TYPES}
             placeholder="All types"
+            value={filters.trainingType ?? ''}
+            onChange={(value) => dispatch(setTrainingType(value || null))}
           />
           <Select
             caption="Trainer"
-            options={mockTrainers}
+            options={TRAINERS}
             placeholder="All trainers"
+            value={filters.trainer ?? ''}
+            onChange={(value) => dispatch(setTrainer(value || null))}
           />
           <Select
             caption="Location"
-            options={mockLocations}
+            options={LOCATIONS}
             placeholder="All locations"
+            value={filters.location ?? ''}
+            onChange={(value) => dispatch(setLocation(value || null))}
           />
         </div>
       </div>

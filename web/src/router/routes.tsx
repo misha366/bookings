@@ -1,7 +1,7 @@
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 
 import { AuthLayout, RootLayout } from '../layouts';
-import { Calendar, Home, Login, MyBookings, NotFound, Register } from '../pages';
+import { CalendarPage, Home, Login, MyBookings, NotFound, Register } from '../pages';
 
 const routes: RouteObject[] = [
   {
@@ -27,7 +27,7 @@ const routes: RouteObject[] = [
       },
       {
         path: 'calendar',
-        element: <Calendar />,
+        element: <CalendarPage />,
       },
       {
         path: 'my-bookings',
