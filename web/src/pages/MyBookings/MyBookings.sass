@@ -1,7 +1,77 @@
 @use '../../styles/variables' as *
 
 .my-bookings
-  padding: $spacing-lg
+  min-height: 100vh
+  background-color: $color-gray-lightest
+
+  &__content
+    padding-top: $spacing-xl
+    padding-bottom: $spacing-xl
 
   &__title
-    //
+    color: $color-charcoal
+    font-weight: $font-weight-semibold
+    font-size: $font-size-lg
+    padding-bottom: $spacing-xs
+
+  &__subtitle
+    color: $color-gray
+    font-weight: $font-weight-regular
+    font-size: $font-size-sm
+    margin: 0
+    padding-bottom: $spacing-xl
+
+  &__list
+    display: flex
+    flex-direction: column
+    padding-top: $spacing-lg
+
+.filter-tabs
+  display: flex
+  gap: $spacing-xl
+  border-bottom: 1px solid $border-color-subtle
+
+  @media (max-width: $breakpoint-sm)
+    gap: $spacing-md
+
+  &__button
+    display: flex
+    align-items: center
+    gap: $spacing-xs
+    padding-bottom: $spacing-sm
+    font-family: inherit
+    font-size: $font-size-sm
+    font-weight: $font-weight-medium
+    color: $color-gray-medium
+    background: none
+    border: none
+    border-bottom: 2px solid transparent
+    cursor: pointer
+    transition: color $transition-fast, border-bottom-color $transition-fast
+
+    @media (max-width: $breakpoint-sm)
+      font-size: $font-size-xs
+      gap: $spacing-xxs
+
+    &:hover
+      color: $color-gray
+      border-bottom-color: $color-gray-light
+
+    &_active,
+    &_active:hover
+      color: $color-blue
+      border-bottom-color: $color-blue
+
+  &__count
+    font-size: $font-size-xs
+    color: $color-gray
+    background-color: $color-gray-lighter
+    padding: $spacing-xxs $spacing-xs
+    border-radius: $border-radius-md
+
+    &_active
+      color: $color-blue
+      background-color: $color-blue-light
+
+.booking-list
+  gap: $spacing-sm

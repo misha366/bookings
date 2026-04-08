@@ -85,7 +85,7 @@ export const Login = (): ReactNode => {
             </p>
           </div>
 
-          <button type="submit" className="login-form__submit btn-primary">
+          <button type="submit" className="login-form__submit button button-primary">
             Sign in
           </button>
 

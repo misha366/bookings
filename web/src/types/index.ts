@@ -10,3 +10,5 @@ export type TrainingSessionDetails = {
 };
 
 export type CalendarEventDetails = Pick<EventApi, 'title' | 'start' | 'end'> & TrainingSessionDetails;
+
+export type MyBookingsFilter = 'upcoming' | 'past' | 'canceled';

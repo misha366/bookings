@@ -65,7 +65,7 @@ export const SocialButton = ({ icon, text, variant }: SocialButtonProps): ReactN
             </p>
             <button
               type="button"
-              className="social-dialog__button btn-primary"
+              className="social-dialog__button button button-primary"
               onClick={() => setIsDialogOpen(false)}
             >
               Got it
